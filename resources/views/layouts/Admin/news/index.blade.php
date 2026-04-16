@@ -1,0 +1,1 @@
+@include('layouts.Admin.master')
