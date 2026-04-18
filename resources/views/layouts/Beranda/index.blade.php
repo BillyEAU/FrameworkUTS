@@ -1,4 +1,6 @@
-@include('layouts.Beranda.categories.master')
+@extends('layouts.Beranda.master.master')
+@section('content')
+    
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -16,11 +18,11 @@
                     <!-- Featured blog post-->
                      
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="{{ asset('storage/Beranda/assets/' . $itim->Img) }}" alt="..." /></a>
+                        <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $itim->Img) }}" alt="..." /></a>
                         <div class="card-body">
                             <div class="small text-muted">{{ $itim->created_at->format('M d, Y') }}</div>
                             <h2 class="card-title">{{ $itim->Title }}</h2>
-                            <p class="card-text">{{ Str::limit($itim->Description, 150) }}</p>
+                            <p class="card-text">{{ Str::limit($itim->content, 150) }}</p>
                             <a class="btn btn-primary" href="/post/{{ $itim->id }}">Read more →</a>
                         </div>
                     </div>
@@ -31,12 +33,12 @@
                             <!-- Blog post-->
                              @foreach($news as $item)
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="{{ asset('storage/Beranda/assets/' . $item->Img) }}" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $item->Img) }}" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $item->created_at->format('M d, Y') }}</div>
                                     <h2 class="card-title h4">{{ $item->Title }}</h2>
-                                    <p class="card-text">{{ Str::limit($item->Description, 150) }}</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <p class="card-text">{{ Str::limit(strip_tags($item->content), 150) }}</p>
+                                    <a class="btn btn-primary" href="/post/{{ $item->id}}">Read more →</a>
                                 </div>
                             </div>
                             @endforeach
@@ -45,12 +47,12 @@
                             <!-- Blog post-->
                              @foreach($nows as $itam)
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="{{ asset('storage/Beranda/assets/' . $itam->Img) }}" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $itam->Img) }}" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $itam->created_at->format('M d, Y') }}</div>
                                     <h2 class="card-title h4">{{ $itam->Title }}</h2>
-                                    <p class="card-text">{{ Str::limit($itam->Description, 150) }}</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <p class="card-text">{{ Str::limit(strip_tags($itam->content), 150) }}</p>
+                                    <a class="btn btn-primary" href="/post/">Read more →</a>
                                 </div>
                             </div>
                             @endforeach
@@ -113,10 +115,9 @@
                 </div>
             </div>
         </div>
+        @endsection
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

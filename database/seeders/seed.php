@@ -15,7 +15,7 @@ class seed extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->insert([
+        DB::table('news_blog')->insert([
             'Title' => 'Kendaraan Udara Orang Kalimantan',
             'Img' => 'KendaraanUdara.jpeg',
             'Description' => 'Kendaraan Tradisional orang Kalimantan, sejak abad 21 Meter',

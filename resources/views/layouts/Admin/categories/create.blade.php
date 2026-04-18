@@ -1,4 +1,6 @@
-@include('layouts.Admin.master')
+@extends('layouts.Admin.master')
+@section('content')
+    
 <div id="layoutSidenav_content">
     <div class="container">
         <h2>Tambah Kategori</h2>
@@ -16,3 +18,5 @@
         </form>
     </div>
 </div>
+
+@endsection

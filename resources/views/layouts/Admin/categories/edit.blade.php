@@ -1,4 +1,6 @@
-@include('layouts.Admin.master')
+@extends('layouts.Admin.master')
+@section('content')
+    
 <div id="layoutSidenav_content">
     <div class="container">
         <h2>Edit Kategori</h2>
@@ -18,6 +20,8 @@
 
     </div>
 </div>
+
+@endsection
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     @if(session('success'))

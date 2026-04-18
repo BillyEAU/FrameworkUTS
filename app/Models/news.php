@@ -9,8 +9,12 @@ class news extends Model
 {
     
     use HasFactory;
-    protected $fillable = ['Title', 'Img', 'Description', ''];
-    public function index(){
-        
+    protected $table = 'news_blog';
+    protected $fillable = ['Title', 'slug', 'content', 'Img', 'category_id', 'user_id'];
+    public function user(){
+        return $this->belongsTo(Post::class);
+    }
+    public function category(){
+        return $this->belongsTo(Categories::class);
     }
 }

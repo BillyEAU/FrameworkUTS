@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('news_blog', function (Blueprint $table) {
             $table->id();
             $table->string('Title');
-            $table->string('Img');
-            $table->string('Description');
-            $table->timestamp('created_at');
+            $table->string('slug')->unique();
+            $table->string('Img')->nullable();
+            $table->text('content');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

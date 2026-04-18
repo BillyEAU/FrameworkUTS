@@ -1,4 +1,6 @@
-@include('layouts.Admin.master')
+@extends('layouts.Admin.master')
+@section('content')
+    
 <div id="layoutSidenav_content">
     <div class="container">
         <h2>Daftar Kategori</h2>
@@ -37,6 +39,7 @@
     </div>
 </div>
 
+@endsection
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

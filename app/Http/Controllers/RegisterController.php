@@ -8,19 +8,32 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
-    public function create(){
-        return view('register');
+    public function create()
+    {
+        return view('layouts.Beranda.register');
     }
-    public function store (Request $request){
+    public function store(Request $request)
+    {
+        
         $validatedData = $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|confirmed'
+            'password' => 'required|min:5|confirmed',
         ]);
-    $validatedData['password'] = Hash::make($validatedData['password']);
-    User::create($validatedData);
-    return redirect('/login')->with('success', 'Mantap');
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 'user'
+        ]);
+        // User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        //     'role' => 'user'
+        // ]);
+        return redirect('login')->with('success', 'Mantap');
     }
-    
 }
