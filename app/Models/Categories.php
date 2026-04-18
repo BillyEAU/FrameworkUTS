@@ -12,6 +12,6 @@ class Categories extends Model
 
     public function news()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(news::class);
     }
 }

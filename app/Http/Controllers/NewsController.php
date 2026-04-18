@@ -17,7 +17,12 @@ class NewsController extends Controller
     public function index()
     {
         $news = news::with('category', 'user')->latest()->paginate(10);
+        $user = Auth::user();
+        if($user->role === 'admin'){
         return view('layouts.Admin.news.index', compact('news'));
+        }else{
+            return redirect()->intended(route('beranda.index'));
+        }
     }
 
     /**
@@ -26,7 +31,8 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Categories::all();
-        return view('layouts.Admin.news.create', compact('categories'));
+        
+            return view('layouts.Admin.news.create', compact('categories'));
     }
 
     /**
@@ -35,7 +41,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'Title' => 'required|string|max:255',
             'content' => 'required',
             'Img' => 'nullable|string',
             'category_id' => 'required|exists:categories,id'
@@ -44,8 +50,8 @@ class NewsController extends Controller
         $imgPath = $this->ekstrakGambar($request->content);
 
         news::create([
-            'Title'         => $request->title,
-            'slug'          => Str::slug($request->title),
+            'Title'         => $request->Title,
+            'slug'          => Str::slug($request->Title),
             'content'       => $request->content,
             'Img'           => $imgPath,
             'user_id'       => Auth::id(),

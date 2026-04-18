@@ -12,7 +12,7 @@ class news extends Model
     protected $table = 'news_blog';
     protected $fillable = ['Title', 'slug', 'content', 'Img', 'category_id', 'user_id'];
     public function user(){
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(User::class);
     }
     public function category(){
         return $this->belongsTo(Categories::class);

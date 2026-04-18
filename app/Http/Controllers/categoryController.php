@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use Illuminate\Support\Facades\Auth;
 
 class categoryController extends Controller
 {
@@ -12,10 +13,14 @@ class categoryController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $categories = Categories::all();
+        if($user->role === 'admin'){
         return view('layouts.Admin.categories.index', compact('categories'));
+        }else{
+            return redirect()->intended(route('beranda.index'));
+        }
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -76,7 +81,7 @@ class categoryController extends Controller
     public function destroy(Categories $category)
     {
         $category->delete();
-
+        
         return redirect()->route('categories.index')
                         ->with('success', 'Kategori berhasil dihapus.');
     }
