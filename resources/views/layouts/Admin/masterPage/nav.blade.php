@@ -8,11 +8,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="/categories">
+                            <a class="nav-link" href="{{route('categories.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Kategori
                             </a>
-                            <a class="nav-link" href="/news">
+                            <a class="nav-link" href="{{route('news.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 News
                             </a>

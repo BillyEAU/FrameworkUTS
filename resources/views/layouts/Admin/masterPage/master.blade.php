@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('layouts.Admin.header')
+@include('layouts.Admin.masterPage.header')
 
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
-        @include('layouts.Admin.topbar')
-        @include('layouts.Admin.nav')
+        @include('layouts.Admin.masterPage.topbar')
+        @include('layouts.Admin.masterPage.nav')
         @yield('content')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

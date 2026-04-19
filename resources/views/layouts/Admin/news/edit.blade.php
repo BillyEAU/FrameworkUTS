@@ -1,4 +1,4 @@
-@extends('layouts.Admin.master')
+@extends('layouts.Admin.masterPage.master')
 @section('content')
 <div id="layoutSidenav_content">
     <div class="container">
@@ -29,7 +29,6 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="Title" class="form-label">Content</label>
                 <div class="mb-3">
                     <label class="form-label">Konten</label>
                     <textarea class="form-control" name="content" id="summernote" cols="30" rows="10">{{ old('content', $news->content) }}</textarea>
@@ -37,7 +36,6 @@
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('news.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
-
     </div>
 </div>
 @endsection

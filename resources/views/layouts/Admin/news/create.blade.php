@@ -1,4 +1,4 @@
-@extends('layouts.Admin.master')
+@extends('layouts.Admin.masterPage.master')
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css">
 @section('content')
